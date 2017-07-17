@@ -1,0 +1,34 @@
+{
+  "name": "activismebe\repositories",
+  "description": "Laravel Repositories",
+  "license": "MIT",
+  "homepage": "https://www.activisme.be",
+  "keywords": ["laravel", "repository", "repositories", "eloquent", "database"],
+  "require": {
+    "php": ">=7.0.0",
+    "illuminate/support": "^5.2",
+    "illuminate/database": "^5.2",
+    "illuminate/filesystem": "^5.2",
+    "illuminate/console": "^5.2"
+  },
+  "require-dev": {
+    "mockery/mockery": "dev-master@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "ActivismeBE\\DatabaseLayering\\": "src/ActivismeBE/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ActivismeBE\\DatabaseLayering\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
