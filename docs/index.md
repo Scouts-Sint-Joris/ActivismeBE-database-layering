@@ -8,9 +8,9 @@ for this copyright notice.
 
 ## Table of contents 
 
-- **[Contributing]()**
-- **[Code of conduct]()**
-- **[License]()**
+- **[Contributing](CONTRIBUTING)**
+- **[Code of conduct](CODE-OF_CONDUCT)**
+- **[License](license)**
 - **Used Libraries:** 
   - [Illuminate/support]()
   - [Illuminate/database]() 
