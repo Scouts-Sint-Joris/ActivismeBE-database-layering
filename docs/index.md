@@ -11,6 +11,7 @@ for this copyright notice.
 - **[Contributing](contributing)**
 - **[Code of conduct](code-of-conduct)**
 - **[License](license)**
+- **[Usage](usage)**
 - **Used Libraries:** 
   - [Illuminate/support]()
   - [Illuminate/database]() 
