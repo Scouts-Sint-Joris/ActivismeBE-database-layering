@@ -191,10 +191,11 @@ class RepositoryCreator
      */
     protected function getStubPath()
     {
-        // TODO: Check if we can refactor this method. 
-
+        // TODO: Check if we can refactor this method.
+        // Stub path.
         $stub_path = __DIR__ . '/../../../../../../resources/stubs/';
-        return $stub_path; // Return the stub path.
+        // Return the stub path.
+        return $stub_path;
     }
 
     /**

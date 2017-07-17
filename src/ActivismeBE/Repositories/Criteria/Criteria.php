@@ -1,5 +1,6 @@
-<?php 
-namespace Bosnadev\Repositories\Criteria;
+<?php
+
+namespace ActivismeBE\DatabaseLayering\Criteria;
 
 use ActivismeBE\DatabaseLayering\Contracts\RepositoryInterface as Repository;
 

@@ -2,7 +2,8 @@
 
 namespace ActivismeBE\DatabaseLayering\Providers;
 
-use Illuminate\Support\{Composer, ServiceProvider};
+use Illuminate\Support\Composer;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Filesystem\Filesystem;
 
 use ActivismeBE\DatabaseLayering\Console\Commands\MakeCriteriaCommand;
@@ -15,6 +16,11 @@ use ActivismeBE\DatabaseLayering\Console\Commands\Creators\RepositoryCreator;
  *
  * @package ActivismeBE\DatabaseLayering\Providers
  */
+/**
+ * Class RepositoryProvider
+ *
+ * @package Bosnadev\Repositories\Providers
+ */
 class RepositoryProvider extends ServiceProvider
 {
     /**
@@ -23,7 +29,6 @@ class RepositoryProvider extends ServiceProvider
      * @var bool
      */
     protected $defer = true;
-
     /**
      * Bootstrap the application services.
      *
@@ -31,11 +36,14 @@ class RepositoryProvider extends ServiceProvider
      */
     public function boot()
     {
-        $config_path = __DIR__ . '/../../../config/repositories.php';  // Config path.
-
-        $this->publishes([$config_path => config_path('repositories.php')], 'repositories'); // Publish config.
+        // Config path.
+        $config_path = __DIR__ . '/../../../../config/repositories.php';
+        // Publish config.
+        $this->publishes(
+            [$config_path => config_path('repositories.php')],
+            'repositories'
+        );
     }
-
     /**
      * Register the application services.
      *
@@ -52,7 +60,7 @@ class RepositoryProvider extends ServiceProvider
         // Register commands
         $this->commands(['command.repository.make', 'command.criteria.make']);
         // Config path.
-        $config_path = __DIR__ . '/../../../config/repositories.php';
+        $config_path = __DIR__ . '/../../../../config/repositories.php';
         // Merge config.
         $this->mergeConfigFrom(
             $config_path,
@@ -64,43 +72,44 @@ class RepositoryProvider extends ServiceProvider
      */
     protected function registerBindings()
     {
-        $this->app->instance('FileSystem', new Filesystem()); // FileSystem.
-        
-        $this->app->bind('Composer', function ($app) { // Composer.
+        // FileSystem.
+        $this->app->instance('FileSystem', new Filesystem());
+        // Composer.
+        $this->app->bind('Composer', function ($app)
+        {
             return new Composer($app['FileSystem']);
         });
-    
-        $this->app->singleton('RepositoryCreator', function ($app) { // Repository creator.
+        // Repository creator.
+        $this->app->singleton('RepositoryCreator', function ($app)
+        {
             return new RepositoryCreator($app['FileSystem']);
         });
-        
-        $this->app->singleton('CriteriaCreator', function ($app) { // Criteria creator.
+        // Criteria creator.
+        $this->app->singleton('CriteriaCreator', function ($app)
+        {
             return new CriteriaCreator($app['FileSystem']);
         });
     }
-
     /**
      * Register the make:repository command.
      */
     protected function registerMakeRepositoryCommand()
     {
         // Make repository command.
-        $this->app['command.repository.make'] = $this->app->singleton(function($app) {
+        $this->app->singleton('command.repository.make', function ($app) {
             return new MakeRepositoryCommand($app['RepositoryCreator'], $app['Composer']);
         });
     }
-
     /**
      * Register the make:criteria command.
      */
     protected function registerMakeCriteriaCommand()
     {
         // Make criteria command.
-        $this->app['command.criteria.make'] = $this->app->singleton(function($app){
+        $this->app->singleton('command.criteria.make', function ($app) {
             return new MakeCriteriaCommand($app['CriteriaCreator'], $app['Composer']);
         });
     }
-
     /**
      * Get the services provided by the provider.
      *
@@ -108,6 +117,9 @@ class RepositoryProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['command.repository.make', 'command.criteria.make'];
+        return [
+            'command.repository.make',
+            'command.criteria.make'
+        ];
     }
 }
