@@ -2,4 +2,4 @@ title: ActivismeBE Database layering
 description: Some PHP repository package for laravel. That puts a layer between application and Eloquent ORM.
 show_downloads: true
 google_analytics:
-theme: jekyll-theme-cayman
+theme:
