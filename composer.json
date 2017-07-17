@@ -6,10 +6,10 @@
   "keywords": ["laravel", "repository", "repositories", "eloquent", "database"],
   "require": {
     "php": ">=7.0.0",
-    "illuminate/support": "^5.2",
-    "illuminate/database": "^5.2",
-    "illuminate/filesystem": "^5.2",
-    "illuminate/console": "^5.2"
+    "illuminate/support": "^5.4",
+    "illuminate/database": "^5.4",
+    "illuminate/filesystem": "^5.4",
+    "illuminate/console": "^5.4"
   },
   "require-dev": {
     "mockery/mockery": "dev-master@dev"
