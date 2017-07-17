@@ -8,7 +8,7 @@ for this copyright notice.
 
 ## Table of contents 
 
-- **[Contributing](CONTRIBUTING)**
+- **[Contributing](contributing)**
 - **[Code of conduct](code-of-conduct)**
 - **[License](license)**
 - **Used Libraries:** 
