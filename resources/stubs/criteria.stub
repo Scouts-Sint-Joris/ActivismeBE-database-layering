@@ -1,0 +1,28 @@
+<?php 
+
+namespace criteria_namespace; 
+
+use ActivismeBE\DatabaseLayering/{
+    Criteria\Criteria,
+    Contracts\RepositoryInterface
+};
+
+/**
+ * Class criteria_class
+ *
+ * @package criteria_namespace
+ */
+class criteria_class extends Criteria 
+{
+
+    /**
+     * @param                       $model
+     * @param RepositoryInterface   $repository
+     *
+     * @return mixed
+     */
+    public function apply($model, RepositoryInterface $repository)
+    {
+        return $model;
+    }
+}
