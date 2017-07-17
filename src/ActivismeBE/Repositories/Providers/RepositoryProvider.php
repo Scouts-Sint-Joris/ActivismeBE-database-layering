@@ -85,7 +85,7 @@ class RepositoryProvider extends ServiceProvider
     protected function registerMakeRepositoryCommand()
     {
         // Make repository command.
-        $this->app['command.repository.make'] = $this->app->share(function($app) {
+        $this->app['command.repository.make'] = $this->app->singleton(function($app) {
             return new MakeRepositoryCommand($app['RepositoryCreator'], $app['Composer']);
         });
     }
@@ -96,7 +96,7 @@ class RepositoryProvider extends ServiceProvider
     protected function registerMakeCriteriaCommand()
     {
         // Make criteria command.
-        $this->app['command.criteria.make'] = $this->app->share(function($app){
+        $this->app['command.criteria.make'] = $this->app->singleton(function($app){
             return new MakeCriteriaCommand($app['CriteriaCreator'], $app['Composer']);
         });
     }
