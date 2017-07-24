@@ -17,13 +17,37 @@ use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
  */
 abstract class Repository implements RepositoryInterface, CriteriaInterface
 {
-    private $app;                                   /** @var App */
-    
-    protected $model;                               /** @var model      */
-    protected $newModel;                            /** @var Collection */
-    protected $criteria;                            /** @var mixed      */
-    protected $skipCriteria = false;                /** @var bool       */
-    protected $preventCriteriaOverwriting = true;   /** @var bool Prevents from overwriting same criteria in chain usage */
+    /**
+     * @var App
+     */
+    private $app;
+
+    /**
+     * @var Model
+     */
+    protected $model;
+
+    /**
+     * @var Collection
+     */
+    protected $newModel;
+
+    /**
+     * @var Collection
+     */
+    protected $criteria;
+
+    /**
+     * @var bool
+     */
+    protected $skipCriteria = false;
+
+    /**
+     * Prevents from overwriting same criteria in chain usage.
+     *
+     * @var bool
+     */
+    protected $preventCriteriaOverwriting = true;
      
     /**
      * @param App $app
@@ -48,6 +72,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     public abstract function model();
     
     /**
+     * Get all the records form the database table.
+     *
      * @param array $columns
      * @return mixed
      */
@@ -59,6 +85,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Apply database relations on the query.
+     *
      * @param array $relations
      * @return $this
      */
@@ -69,6 +97,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Lists all the values based on key and column.
+     *
+     * @deprecated deprecated in Laravel 5.3
+     *
      * @param  string $value
      * @param  string $key
      * @return array
@@ -86,8 +118,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * @param int $perPage
-     * @param array $columns
+     * Paginate the database results from the query.
+     *
+     * @param  int      $perPage
+     * @param  array    $columns
      * @return mixed
      */
     public function paginate($perPage = 25, $columns = ['*'])
@@ -97,6 +131,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Create a new data record in the database.
+     *
      * @param array $data
      * @return mixed
      */
@@ -106,7 +142,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * save a model without massive assignment
+     * Save a model without mass assignment
      *
      * @param array $data
      * @return bool
@@ -121,8 +157,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * @param array $data
-     * @param $id
+     * Update a record in the database table.
+     *
+     * @param array  $data
+     * @param int    $id
      * @param string $attribute
      * @return mixed
      */
@@ -132,8 +170,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Update database records through the eloquent fill method.
+     *
      * @param  array $data
-     * @param  $id
+     * @param  int   $id
      * @return mixed
      */
     public function updateRich(array $data, $id)
@@ -146,7 +186,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * @param $id
+     * Delete a record in the database.
+     *
+     * @param  int $id
      * @return mixed
      */
     public function delete($id)
@@ -155,8 +197,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * @param $id
-     * @param array $columns
+     * Find a record in the database based on the primary key.
+     *
+     * @param  int   $id
+     * @param  array $columns
      * @return mixed
      */
     public function find($id, $columns = array('*'))
@@ -166,9 +210,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * @param $attribute
-     * @param $value
-     * @param array $columns
+     * Find the first record in the database based on column and value.
+     *
+     * @param  string $attribute
+     * @param  string $value
+     * @param  array  $columns
      * @return mixed
      */
     public function findBy($attribute, $value, $columns = ['*'])
@@ -178,9 +224,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * @param $attribute
-     * @param $value
-     * @param array $columns
+     * Find all the records in the database bases on column and value.
+     *
+     * @param  string $attribute
+     * @param  string $value
+     * @param  array  $columns
      * @return mixed
      */
     public function findAllBy($attribute, $value, $columns = ['*'])
@@ -194,7 +242,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @param array $where
      * @param array $columns
-     * @param bool $or
+     * @param bool  $or
      *
      * @return \Illuminate\Database\Eloquent\Collection|null
      */
@@ -257,6 +305,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Reset the query scope.
+     *
      * @return $this
      */
     public function resetScope()
@@ -266,7 +316,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * @param bool $status
+     * Skip the given criteria.
+     *
+     * @param  bool $status
      * @return $this
      */
     public function skipCriteria($status = true)
@@ -276,6 +328,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Get the criteria for the database query.
+     *
      * @return mixed
      */
     public function getCriteria()
@@ -284,6 +338,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Get records based on the repository call criteria.
+     *
      * @param Criteria $criteria
      * @return $this
      */
@@ -294,6 +350,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Push new query criteria in the interface call.
+     *
      * @param Criteria $criteria
      * @return $this
      */
@@ -314,6 +372,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Applies a new criteria in the repository call.
+     *
      * @return $this
      */
     public function applyCriteria()
