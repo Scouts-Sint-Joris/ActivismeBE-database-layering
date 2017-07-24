@@ -6,7 +6,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 
-use ActivismeBE\DatabaseLayering\Contracts\{RepositoryInterface, CriteriaInterface};
+use ActivismeBE\DatabaseLayering\Contracts\RepositoryInterface;
+use ActivismeBE\DatabaseLayering\Contracts\CriteriaInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Exceptions\RepositoryException;
 use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
 
