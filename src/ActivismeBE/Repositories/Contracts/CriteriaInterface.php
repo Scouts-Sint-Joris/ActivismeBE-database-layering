@@ -24,6 +24,7 @@ interface CriteriaInterface
     
     /**
      * @param Criteria $criteria
+     * 
      * @return $this
      */
     public function getByCriteria(Criteria $criteria);

@@ -80,7 +80,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Get all the records form the database table.
      *
-     * @param array $columns
+     * @param array $columns The database column names u want to use in your view.
      * 
      * @return mixed
      */
@@ -94,7 +94,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Apply database relations on the query.
      *
-     * @param array $relations The relations u want to apply on your repository query.
+     * @param array $relations The relations u want to apply on your query.
      * 
      * @return $this
      */
@@ -129,8 +129,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Paginate the database results from the query.
      *
-     * @param  int      $perPage
-     * @param  array    $columns
+     * @param integer $perPage The data records u want to display per page. 
+     * @param array   $columns Te database columns u want to use in the view.
      * 
      * @return mixed
      */
@@ -143,7 +143,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Create a new data record in the database.
      *
-     * @param array $data
+     * @param array $data The data fields u want to store in the database table.
      * 
      * @return mixed
      */
@@ -185,8 +185,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Update database records through the eloquent fill method.
      *
-     * @param  array $data
-     * @param  int   $id
+     * @param  array     $data the data fields u want to 
+     * @param  integer   $id   
      * 
      * @return mixed
      */
@@ -214,8 +214,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Find a record in the database based on the primary key.
      *
-     * @param  int   $id
-     * @param  array $columns
+     * @param integer $id
+     * @param array   $columns
      * 
      * @return mixed
      */
@@ -228,9 +228,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Find the first record in the database based on column and value.
      *
-     * @param  string $attribute    The database column name.
-     * @param  string $value        The value that u want to find in the database table.
-     * @param  array  $columns      The database columns u want to use.
+     * @param string $attribute The database column name.
+     * @param string $value     The value that u want to find in the database table.
+     * @param array  $columns   The database columns u want to use.
+     * 
      * @return mixed
      */
     public function findBy($attribute, $value, $columns = ['*'])
@@ -242,9 +243,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Find all the records in the database bases on column and value.
      *
-     * @param  string $attribute    The database column name.
-     * @param  string $value        The value where u want to search on.
-     * @param  array  $columns      The database columns want to use.
+     * @param string $attribute The database column name.
+     * @param string $value     The value where u want to search on.
+     * @param array  $columns   The database columns want to use.
+     * 
      * @return mixed
      */
     public function findAllBy($attribute, $value, $columns = ['*'])
@@ -294,6 +296,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Make a model instance in the repository.
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      * @throws RepositoryException
      */
