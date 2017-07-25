@@ -1,6 +1,6 @@
 <?php
 
-namespace ActivismeBE\DatabaseLayering\Providers;
+namespace ActivismeBE\DatabaseLayering\Repositories\Providers;
 
 use Illuminate\Support\Composer;
 use Illuminate\Support\ServiceProvider;
