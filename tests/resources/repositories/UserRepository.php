@@ -13,6 +13,6 @@ class UserRepository extends Repository
 {
     public function model()
     {
-        return 'ActivismeBE\DatabaseLayering\Tests\Resources\Models\User';
+        return User::class;
     }
 }

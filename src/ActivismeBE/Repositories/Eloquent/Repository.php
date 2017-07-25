@@ -145,6 +145,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Save a model without mass assignment
      *
+     * @see  \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testSaveModel()
+     *
      * @param array $data
      * @return bool
      */
@@ -173,6 +175,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Update database records through the eloquent fill method.
      *
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testUpdateRich()
+     *
      * @param  array $data
      * @param  int   $id
      * @return mixed
@@ -189,7 +193,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Delete a record in the database.
      *
-     * @param  int $id
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testDeleteData()
+     *
+     * @param  int   $id        The resource id in the database.
      * @return mixed
      */
     public function delete($id)
@@ -200,8 +206,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Find a record in the database based on the primary key.
      *
-     * @param  int   $id
-     * @param  array $columns
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindAllColumns()
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindSpecificColumns()
+     *
+     * @param  int   $id        The resource id in the database.
+     * @param  array $columns   The database columns u want to use.
      * @return mixed
      */
     public function find($id, $columns = array('*'))

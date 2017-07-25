@@ -8,7 +8,6 @@ namespace ActivismeBE\DatabaseLayering\Tests\Repositories;
 use ActivismeBE\DatabaseLayering\Repositories\Providers\RepositoryProvider;
 use ActivismeBE\DatabaseLayering\Tests\Resources\Models\User;
 use ActivismeBE\DatabaseLayering\Tests\Resources\Repositories\UserRepository;
-use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Collection;
 use \Mockery as m;
@@ -21,7 +20,9 @@ class RepositoryTest extends \Orchestra\Testbench\TestCase
     public function setUp() 
     {
         parent::setUp();
-        $this->mock = m::mock(Model::class);
+        $this->mock         = m::mock('Eloquent');
+        $this->repository   = new UserRepository($this->app, new Collection());
+
         $this->setUpDatabase($this->app);
     }
 
@@ -58,15 +59,49 @@ class RepositoryTest extends \Orchestra\Testbench\TestCase
             $table->timestamps();
         });
 
-        $app[User::class]->create(['first_name' => 'firstname']);
+        $app[User::class]->insert([
+            'first_name' => 'firstname',
+            'last_name'  => 'lastname',
+            'email'      => 'email@example.tld',
+            'password'   => 'secret',
+        ]);
     }
 
     public function testFindAllColumns()
     {
-        $mock = m::mock('Eloquent');
-        $mock->shouldReceive('find')->with($userId = 1)->andReturn('first_name');
+        $call = $this->repository->find(1);
 
-        $repo = new UserRepository($this->app, new Collection());
-        $this->assertEquals('firstname', $repo->find($userId)->first_name);
+        $this->assertEquals('firstname', $call->first_name);
+        $this->assertEquals('lastname', $call->last_name);
+        $this->assertEquals('email@example.tld', $call->email);
+        $this->assertEquals('secret', $call->password);
+    }
+
+    public function testFindSpecificColumns()
+    {
+        $call = $this->repository->find(1, ['first_name', 'last_name']);
+
+        $this->assertEquals('firstname', $call->first_name);
+        $this->assertEquals('lastname', $call->last_name);
+        $this->assertNull($call->password);
+        $this->assertNull($call->email);
+    }
+
+    public function testDeleteData()
+    {
+        $this->repository->delete(1);
+        $check = $this->repository->find(1);
+
+        $this->assertNull($check);
+    }
+
+    public function testUpdateRich()
+    {
+        // TODO: Write test
+    }
+
+    public function testSaveModel()
+    {
+        // TODO: Write test
     }
 }
