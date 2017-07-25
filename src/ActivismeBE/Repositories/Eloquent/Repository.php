@@ -1,13 +1,13 @@
 <?php
 
-namespace Bosnadev\Repositories\Eloquent;
+namespace ActivismeBE\DatabaseLayering\Repositories\Eloquent;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 
-use ActivismeBE\DatabaseLayering\Contracts\RepositoryInterface;
-use ActivismeBE\DatabaseLayering\Contracts\CriteriaInterface;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\CriteriaInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Exceptions\RepositoryException;
 use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
 
