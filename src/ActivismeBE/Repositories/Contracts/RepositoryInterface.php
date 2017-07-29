@@ -5,10 +5,9 @@ namespace ActivismeBE\DatabaseLayering\Contracts;
 /**
  * Interface RepositoryInterface
  * 
- * @category 
- * @package ActivismeBE\DatabaseLayering\Contracts
- * @author
- * @author
+ * @category RepositoryInterface
+ * @package  ActivismeBE\DatabaseLayering\Contracts
+ * @author   Tim Joosten <topairy@gmail.com>
  */
 interface RepositoryInterface
 {
