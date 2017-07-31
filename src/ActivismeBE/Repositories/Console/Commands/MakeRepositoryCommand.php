@@ -5,7 +5,7 @@ namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands;
 use Illuminate\Console\Command; 
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use ActivismeBE\DatabaseLayering\Console\Commands\Creators\RepositoryCreator; 
+use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\RepositoryCreator;
 
 /**
  * Class MakeRepositoryCommand
