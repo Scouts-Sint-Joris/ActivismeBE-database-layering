@@ -1,6 +1,6 @@
 <?php
 
-namespace ActivismeBE\DatabaseLayering\Criteria;
+namespace ActivismeBE\DatabaseLayering\Repositories\Criteria;
 
 use ActivismeBE\DatabaseLayering\Contracts\RepositoryInterface as Repository;
 

@@ -10,69 +10,87 @@ namespace ActivismeBE\DatabaseLayering\Contracts;
 interface RepositoryInterface 
 {
     /**
-     * @param array $columns
+     * Get all the rows for the database table.
+     *
+     * @param  array $columns
      * @return mixed
      */
     public function all($columns = ['*']);
 
     /**
-     * @param $perPage
-     * @param array $columns
+     * Paginate the database table results.
+     *
+     * @param  integer $perPage
+     * @param  array   $columns
      * @return mixed
      */
     public function paginate($perPage = 1, $columns = ['*']);
 
     /**
-     * @param array $data
+     * Create a new row in the database table.
+     *
+     * @param  array $data
      * @return mixed
      */
     public function create(array $data);
 
     /**
+     * Save a model without mass assignment
+     *
      * @param array $data
      * @return bool
      */
     public function saveModel(array $data);
 
     /**
-     * @param array $data
-     * @param $id
+     * Update a record in the database table.
+     *
+     * @param  array   $data
+     * @param  integer $id
      * @return mixed
      */
     public function update(array $data, $id);
 
     /**
-     * @param $id
+     * Delete a record in the database.
+     *
+     * @param  integer $id
      * @return mixed
      */
     public function delete($id);
 
     /**
-     * @param $id
-     * @param array $columns
+     * Find a record in the database based on the primary key.
+     *
+     * @param  integer $id
+     * @param  array   $columns
      * @return mixed
      */
     public function find($id, $columns = ['*']);
 
     /**
-     * @param $field
-     * @param $value
-     * @param array $columns
+     * Find a collection of models by the given query conditions.
+     *
+     * @param  string $field
+     * @param  string $value
+     * @param  array  $columns
      * @return mixed
      */
     public function findBy($field, $value, $columns = ['*']);
 
     /**
-     * @param $field
-     * @param $value
-     * @param array $columns
+     * @param  string $field
+     * @param  string $value
+     * @param  array $columns
      * @return mixed
      */
     public function findAllBy($field, $value, $columns = ['*']);
 
     /**
-     * @param $where
-     * @param array $columns
+     * Find a collection of models by the given query conditions.
+     *
+     * @param  array $where
+     * @param  array $columns
      * @return mixed
      */
     public function findWhere($where, $columns = ['*']);

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bosnadev\Repositories\Exceptions;
+namespace ActivismeBE\DatabaseLayering\Repositories\Exceptions;
 
 use Exception;
 
