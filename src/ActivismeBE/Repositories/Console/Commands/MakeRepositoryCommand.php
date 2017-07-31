@@ -3,7 +3,8 @@
 namespace ActivismeBE\DatabaseLayering\Console\Commands; 
 
 use Illuminate\Console\Command; 
-use Symfony\Component\Console\Input\{InputOption, InputArgument}; 
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\InputArgument;
 use ActivismeBE\DatabaseLayering\Console\Commands\Creators\RepositoryCreator; 
 
 /**

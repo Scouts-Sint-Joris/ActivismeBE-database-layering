@@ -133,7 +133,7 @@ $this->film->findAllBy('author_id', $authorId);
 Get all results by multiple fields
 
 ```php
-$this->film->findWhere(['author_id' => $authorIdn ['year', '>', $year]]);
+$this->film->findWhere(['author_id' => $authorId, ['year', '>', $year]]);
 ```
 
 ## Criteria 

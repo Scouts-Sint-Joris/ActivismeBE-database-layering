@@ -1,6 +1,6 @@
 <?php
 
-namespace ActivismeBE\DatabaseLayering\Providers;
+namespace ActivismeBE\DatabaseLayering\Repositories\Providers;
 
 use Illuminate\Support\Composer;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +29,7 @@ class RepositoryProvider extends ServiceProvider
      * @var bool
      */
     protected $defer = true;
+
     /**
      * Bootstrap the application services.
      *
@@ -38,12 +39,11 @@ class RepositoryProvider extends ServiceProvider
     {
         // Config path.
         $config_path = __DIR__ . '/../../../../config/repositories.php';
+        
         // Publish config.
-        $this->publishes(
-            [$config_path => config_path('repositories.php')],
-            'repositories'
-        );
+        $this->publishes([$config_path => config_path('repositories.php')], 'repositories');
     }
+
     /**
      * Register the application services.
      *
@@ -53,45 +53,53 @@ class RepositoryProvider extends ServiceProvider
     {
         // Register bindings.
         $this->registerBindings();
+
         // Register make repository command.
         $this->registerMakeRepositoryCommand();
+
         // Register make criteria command.
         $this->registerMakeCriteriaCommand();
+
         // Register commands
         $this->commands(['command.repository.make', 'command.criteria.make']);
+
         // Config path.
         $config_path = __DIR__ . '/../../../../config/repositories.php';
+
         // Merge config.
-        $this->mergeConfigFrom(
-            $config_path,
-            'repositories'
-        );
+        $this->mergeConfigFrom($config_path, 'repositories');
     }
+
     /**
      * Register the bindings.
+     *
+     * @return void
      */
     protected function registerBindings()
     {
         // FileSystem.
         $this->app->instance('FileSystem', new Filesystem());
+
         // Composer.
-        $this->app->bind('Composer', function ($app)
-        {
+        $this->app->bind('Composer', function ($app) { 
             return new Composer($app['FileSystem']);
         });
+
         // Repository creator.
-        $this->app->singleton('RepositoryCreator', function ($app)
-        {
+        $this->app->singleton('RepositoryCreator', function ($app) {
             return new RepositoryCreator($app['FileSystem']);
         });
+
         // Criteria creator.
-        $this->app->singleton('CriteriaCreator', function ($app)
-        {
+        $this->app->singleton('CriteriaCreator', function ($app) {
             return new CriteriaCreator($app['FileSystem']);
         });
     }
+
     /**
      * Register the make:repository command.
+     *
+     * @return void
      */
     protected function registerMakeRepositoryCommand()
     {
@@ -100,8 +108,11 @@ class RepositoryProvider extends ServiceProvider
             return new MakeRepositoryCommand($app['RepositoryCreator'], $app['Composer']);
         });
     }
+
     /**
      * Register the make:criteria command.
+     *
+     * @return void
      */
     protected function registerMakeCriteriaCommand()
     {
@@ -110,6 +121,7 @@ class RepositoryProvider extends ServiceProvider
             return new MakeCriteriaCommand($app['CriteriaCreator'], $app['Composer']);
         });
     }
+
     /**
      * Get the services provided by the provider.
      *
@@ -117,9 +129,6 @@ class RepositoryProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [
-            'command.repository.make',
-            'command.criteria.make'
-        ];
+        return ['command.repository.make', 'command.criteria.make'];
     }
 }

@@ -3,20 +3,37 @@
 namespace ActivismeBE\DatabaseLayering\Tests\Repositories;
 
 use \Mockery as m;
-use \PHPUnit_Framework_TestCase as TestCase;
 
-class RepositoryTest extends TestCase 
+class RepositoryTest extends \Orchestra\Testbench\TestCase
 {
     protected $mock;
     protected $repository;
     
     public function setUp() 
     {
+        parent::setUp();
         $this->mock = m::mock('Illuminate\Database\Eloquent\Model');
     }
-    
-    public function testRepository()
+
+    protected function getPackageProviders($app)
     {
-        $this->assertTrue(true);
+        return ['ActivismeBE\DatabaseLayering\Repositories\Providers\RepositoryProvider'];
+    }
+
+    /**
+     * Define environment setup.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
     }
 }

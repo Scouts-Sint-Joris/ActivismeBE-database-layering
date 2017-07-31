@@ -2,7 +2,7 @@
 
 namespace ActivismeBE\DatabaseLayering\Contracts;
 
-use ActivismeBE\DatabaseLayering\Criteria\Criteria;
+use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
 
 /**
  * Interface CriteriaInterface
