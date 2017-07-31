@@ -1,13 +1,13 @@
 <?php
 
-namespace Bosnadev\Repositories\Eloquent;
+namespace ActivismeBE\DatabaseLayering\Repositories\Eloquent;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 
-use ActivismeBE\DatabaseLayering\Contracts\RepositoryInterface;
-use ActivismeBE\DatabaseLayering\Contracts\CriteriaInterface;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\CriteriaInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Exceptions\RepositoryException;
 use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
 
@@ -155,6 +155,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Save a model without mass assignment
      *
+     * @see  \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testSaveModel()
+     *
      * @param array $data
      * 
      * @return bool
@@ -202,8 +204,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Delete a record in the database.
      *
-     * @param integer $id The resource id in the database.
-     * 
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testDeleteData()
+     *
+     * @param  int   $id        The resource id in the database.
+     *
      * @return mixed
      */
     public function delete($id)
@@ -214,9 +218,12 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Find a record in the database based on the primary key.
      *
-     * @param integer $id
-     * @param array   $columns
-     * 
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindAllColumns()
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindSpecificColumns()
+     *
+     * @param  int   $id        The resource id in the database.
+     * @param  array $columns   The database columns u want to use.
+     
      * @return mixed
      */
     public function find($id, $columns = array('*'))
