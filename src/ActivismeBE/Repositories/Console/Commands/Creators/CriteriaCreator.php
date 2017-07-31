@@ -117,7 +117,7 @@ class CriteriaCreator
         $criteria_namespace = Config::get('repositories.criteria_namespace');  // Criteria namespace.
         $criteria_class     = $criteria; // Criteria class.
         
-        if (isset($model) && !empty($model)) { // Check if the model isset and not empty.
+        if (isset($model) && !empty($model)) {  // Check if the model isset and not empty.
             $criteria_namespace .= '\\' . $model; // Update the criteria namespace with the model folder.
         }
 
