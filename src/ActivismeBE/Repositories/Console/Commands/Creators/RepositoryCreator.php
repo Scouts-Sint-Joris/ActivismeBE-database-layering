@@ -1,6 +1,6 @@
 <?php
 
-namespace ActivismeBE\DatabaseLayering\Console\Commands\Creators;
+namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;

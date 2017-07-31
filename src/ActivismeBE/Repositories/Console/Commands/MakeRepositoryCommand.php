@@ -1,6 +1,6 @@
 <?php 
 
-namespace ActivismeBE\DatabaseLayering\Console\Commands; 
+namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands;
 
 use Illuminate\Console\Command; 
 use Symfony\Component\Console\Input\InputOption;

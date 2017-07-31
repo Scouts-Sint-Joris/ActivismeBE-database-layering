@@ -2,10 +2,10 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Providers;
 
-use ActivismeBE\DatabaseLayering\Console\Commands\Creators\CriteriaCreator;
-use ActivismeBE\DatabaseLayering\Console\Commands\Creators\RepositoryCreator;
-use ActivismeBE\DatabaseLayering\Console\Commands\MakeCriteriaCommand;
-use ActivismeBE\DatabaseLayering\Console\Commands\MakeRepositoryCommand;
+use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\CriteriaCreator;
+use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\RepositoryCreator;
+use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\MakeCriteriaCommand;
+use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\MakeRepositoryCommand;
 
 use Illuminate\Support\Composer;
 use Illuminate\Support\ServiceProvider;
