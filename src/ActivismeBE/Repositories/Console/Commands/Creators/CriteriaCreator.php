@@ -121,7 +121,10 @@ class CriteriaCreator
             $criteria_namespace .= '\\' . $model; // Update the criteria namespace with the model folder.
         }
 
-        $populate_data = ['criteria_namespace' => $criteria_namespace, 'criteria_class' => $criteria_class]; // Populate data.
+        $populate_data = [ // Populate data.
+            'criteria_namespace' => $criteria_namespace,
+            'criteria_class'     => $criteria_class
+        ];
     
         return $populate_data; // Return the populate data.
     }
@@ -170,7 +173,7 @@ class CriteriaCreator
         $populate_data = $this->getPopulateData();  // Populate data
         $stub = $this->getStub();                   // Stub
         
-        foreach ($populate_data as $search => $replace) { // Loop through the populate data.
+        foreach ($populate_data as $search => $replace) {   // Loop through the populate data.
             $stub = str_replace($search, $replace, $stub);  // Populate the stub.
         }
         
@@ -184,10 +187,9 @@ class CriteriaCreator
      */
     protected function createClass()
     {
-        // Result.
-        $result = $this->files->put($this->getPath(), $this->populateStub());
-        // Return the result.
-        return $result;
+        $result = $this->files->put($this->getPath(), $this->populateStub()); // Result.
+
+        return $result; // Return the result.
     }
 
     /**
