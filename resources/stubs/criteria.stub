@@ -2,10 +2,8 @@
 
 namespace criteria_namespace; 
 
-use ActivismeBE\DatabaseLayering/{
-    Criteria\Criteria,
-    Contracts\RepositoryInterface
-};
+use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 
 /**
  * Class criteria_class
