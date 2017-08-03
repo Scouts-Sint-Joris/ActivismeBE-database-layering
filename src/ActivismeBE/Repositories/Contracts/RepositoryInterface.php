@@ -78,6 +78,15 @@ interface RepositoryInterface
     public function find($id, $columns = ['*']);
 
     /**
+     * Try to find a record in the database based on the primary key.
+     *
+     * @param integer $id The primary key in the database table. 
+     * 
+     * @return void
+     */
+    public function findOrFail($id);
+
+    /**
      * Find a collection of models by the given query conditions.
      *
      * @param string $field   The field where u want to search on.
