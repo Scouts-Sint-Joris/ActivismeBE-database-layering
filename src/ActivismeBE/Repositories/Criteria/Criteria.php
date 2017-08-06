@@ -2,14 +2,14 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Criteria;
 
-use ActivismeBE\DatabaseLayering\Contracts\RepositoryInterface as Repository;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 
 abstract class Criteria 
 {
     /**
      * @param $model
-     * @param Repository $repository
+     * @param RepositoryInterface $repository
      * @return mixed
      */
-    public abstract function apply($model, Repository $repository);
+    public abstract function apply($model, RepositoryInterface $repository);
 }

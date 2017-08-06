@@ -233,6 +233,21 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Try to find a record in the database table based on the primary key.
+     *
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrfailSuc()
+     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrFailErr()
+     * 
+     * @param integer $id The primary key in the database table.
+     * 
+     * @return mixed
+     */
+    public function findOrFail($id) 
+    {
+        return $this->model->findOrFail($id);
+    }
+
+    /**
      * Find the first record in the database based on column and value.
      *
      * @param string $attribute The database column name.
