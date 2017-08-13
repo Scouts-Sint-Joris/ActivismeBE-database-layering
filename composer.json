@@ -5,7 +5,7 @@
   "homepage": "https://www.activisme.be",
   "keywords": ["laravel", "repository", "repositories", "eloquent", "database"],
   "require": {
-    "php": ">=7.0.0",
+    "php": ">=5.6.0",
     "illuminate/support": "^5.4",
     "illuminate/database": "^5.4",
     "illuminate/filesystem": "^5.4",
