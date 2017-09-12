@@ -2,6 +2,7 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
@@ -151,6 +152,27 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     {
         return $this->model->create($data);
     }
+
+    /**
+     * Fill attributes data before saving. 
+     * 
+     * @param array  $data          The given data from the input. 
+     * @param integer $primaryKey   The primary key in the database table. 
+     * 
+     * @throws ModelNotFoundException
+     * 
+     * @return mixed
+     */
+    public function fill(array $data, $primaryKey) 
+    {
+        $model = $this->makeModel()->find($primaryKey); 
+
+        if (! $model) {
+            throw new ModelNotFoundException("Model '" . $this->model() . "' with id ${id} not found.");
+        }
+
+        return $model->fill($data)->save();
+    } 
 
     /**
      * Save a model without mass assignment
