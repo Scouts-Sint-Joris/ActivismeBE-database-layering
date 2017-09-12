@@ -174,12 +174,12 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Update a record in the database table.
      *
      * @param array  $data
-     * @param int    $id
+     * @param int    $primaryKey
      * @param string $attribute
      * 
      * @return mixed
      */
-    public function update(array $data, $id, $attribute = "id")
+    public function update(array $data, $primaryKey, $attribute = "id")
     {
         return $this->model->where($attribute, '=', $id)->update($data);
     }
@@ -187,12 +187,12 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Update database records through the eloquent fill method.
      *
-     * @param  array     $data the data fields u want to 
-     * @param  integer   $id   
+     * @param  array     $data          The data fields u want to 
+     * @param  integer   $primaryKey    The primary key in the database column.
      * 
      * @return mixed
      */
-    public function updateRich(array $data, $id)
+    public function updateRich(array $data, $primaryKey)
     {
         if (! ($model = $this->model->find($id))) {
             return false;
@@ -206,11 +206,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testDeleteData()
      *
-     * @param  int   $id        The resource id in the database.
+     * @param  int   $primaryKey        The resource id in the database.
      *
      * @return mixed
      */
-    public function delete($id)
+    public function delete($primaryKey)
     {
         return $this->model->destroy($id);
     }
@@ -221,12 +221,12 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindAllColumns()
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindSpecificColumns()
      *
-     * @param  int   $id        The resource id in the database.
-     * @param  array $columns   The database columns u want to use.
+     * @param  int   $primaryKey    The resource id in the database.
+     * @param  array $columns       The database columns u want to use.
      
      * @return mixed
      */
-    public function find($id, $columns = array('*'))
+    public function find($primaryKey, $columns = array('*'))
     {
         $this->applyCriteria();
         return $this->model->find($id, $columns);
@@ -238,11 +238,11 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrfailSuc()
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrFailErr()
      * 
-     * @param integer $id The primary key in the database table.
+     * @param integer $primaryKey The primary key in the database table.
      * 
      * @return mixed
      */
-    public function findOrFail($id) 
+    public function findOrFail($primaryKey) 
     {
         return $this->model->findOrFail($id);
     }
