@@ -105,7 +105,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * Lists all the values based on key and column.
+     * Pluck all the values based on key and column.
      *
      * @param string $value The value for the lists function.
      * @param string $key   The key for the lists function. 
@@ -114,7 +114,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * 
      * @return array
      */
-    public function lists($value, $key = null)
+    public function pluck($value, $key = null)
     {
         $this->applyCriteria();
         $lists = $this->model->lists($value, $key);
