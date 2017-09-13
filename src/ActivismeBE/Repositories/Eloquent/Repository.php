@@ -77,6 +77,16 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @return mixed
      */
     public abstract function model();
+
+    /**
+     * Get the base enttiy form the model.
+     * 
+     * @return \Illuminate\Database\Eloquent\Model 
+     */
+    public function entity() 
+    {
+        return $this->newModel;
+    }
     
     /**
      * Get all the records form the database table.
