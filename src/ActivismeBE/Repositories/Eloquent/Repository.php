@@ -223,7 +223,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @param  int   $id        The resource id in the database.
      * @param  array $columns   The database columns u want to use.
-     
+     *
      * @return mixed
      */
     public function find($id, $columns = array('*'))
