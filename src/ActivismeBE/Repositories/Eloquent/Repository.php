@@ -2,10 +2,11 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Contracts\CriteriaInterface;
@@ -77,6 +78,16 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @return mixed
      */
     public abstract function model();
+
+    /**
+     * Get the base enttiy form the model.
+     * 
+     * @return \Illuminate\Database\Eloquent\Model 
+     */
+    public function entity() 
+    {
+        return $this->newModel;
+    }
     
     /**
      * Get all the records form the database table.
@@ -106,7 +117,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * Lists all the values based on key and column.
+     * Pluck all the values based on key and column.
      *
      * @param string $value The value for the lists function.
      * @param string $key   The key for the lists function. 
@@ -115,7 +126,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * 
      * @return array
      */
-    public function lists($value, $key = null)
+    public function pluck($value, $key = null)
     {
         $this->applyCriteria();
         $lists = $this->model->lists($value, $key);
@@ -313,7 +324,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
         $this->applyCriteria();
         $model = $this->model;
         foreach ($where as $field => $value) {
-            if ($value instanceof \Closure) {
+            if ($value instanceof Closure) {
                 $model = (!$or)
                     ? $model->where($value)
                     : $model->orWhere($value);
