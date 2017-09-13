@@ -2,6 +2,7 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Eloquent;
 
+use Closure;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
@@ -291,7 +292,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
         $this->applyCriteria();
         $model = $this->model;
         foreach ($where as $field => $value) {
-            if ($value instanceof \Closure) {
+            if ($value instanceof Closure) {
                 $model = (!$or)
                     ? $model->where($value)
                     : $model->orWhere($value);
