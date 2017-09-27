@@ -30,6 +30,11 @@
   "extra": {
     "branch-alias": {
       "dev-master": "0.x-dev"
+    },
+    "laravel": {
+      "providers": [
+        "ActivismeBE\\DatabaseLayering\\Repositories\\Providers\\RepositoryProvider"
+      ]
     }
   },
   "minimum-stability": "dev",
