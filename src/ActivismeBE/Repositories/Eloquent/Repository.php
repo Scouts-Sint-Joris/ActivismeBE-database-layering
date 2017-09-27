@@ -249,6 +249,21 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * Delete all by field and value.
+     *
+     * @param string $field The database column name.
+     * @param string $selector  The where clause selector.
+     * @param string $value The value for the given database column.
+     *
+     * @return boolean
+     */
+    public function deleteAllBy($field, $selector, $value)
+    {
+        $this->applyCriteria();
+        return $this->model->where($field, $selector, $value)->delete();
+    }
+
+    /**
      * Find a record in the database based on the primary key.
      *
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindAllColumns()
