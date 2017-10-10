@@ -24,7 +24,7 @@ class CacheKeys
      * @param  $key
      * @return void
      */
-    public function putKey($group, $key)
+    public static function putKey($group, $key)
     {
         self::loadKeys();
         self::$keys[$group] = self::getKeys($group);
