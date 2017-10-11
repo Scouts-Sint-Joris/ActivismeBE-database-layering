@@ -51,40 +51,51 @@ interface RepositoryInterface
     /**
      * Update a record in the database table.
      *
-     * @param array   $data The input data fields u want to update in the db.
-     * @param integer $id   The PK in the database.
+     * @param array   $data         The input data fields u want to update in the db.
+     * @param integer $primaryKey   The PK in the database.
      * 
      * @return mixed
      */
-    public function update(array $data, $id);
+    public function update(array $data, $primaryKey);
 
     /**
      * Delete a record in the database.
      *
-     * @param integer $id The resource id in the database. (PK)
+     * @param integer $primaryKey The resource id in the database. (PK)
      * 
      * @return mixed
      */
-    public function delete($id);
+    public function delete($primaryKey);
+
+    /**
+     * Delete all by field and value.
+     *
+     * @param string $field     The database column name.
+     * @param string $selector  The where clause selector.
+     * @param string $value     The value for the given database column.
+     *
+     * @return boolean
+     */
+    public function deleteAllBy($field, $selector, $value);
 
     /**
      * Find a record in the database based on the primary key.
      *
-     * @param integer $id      The resource id in the database. (PK)
-     * @param array   $columns The db table columns that u want to use in your view.
+     * @param integer $primaryKey       The resource id in the database. (PK)
+     * @param array   $columns          The db table columns that u want to use in your view.
      * 
      * @return mixed
      */
-    public function find($id, $columns = ['*']);
+    public function find($primaryKey, $columns = ['*']);
 
     /**
      * Try to find a record in the database based on the primary key.
      *
-     * @param integer $id The primary key in the database table. 
+     * @param integer $primaryKey The primary key in the database table. 
      * 
      * @return void
      */
-    public function findOrFail($id);
+    public function findOrFail($primaryKey);
 
     /**
      * Find a collection of models by the given query conditions.
