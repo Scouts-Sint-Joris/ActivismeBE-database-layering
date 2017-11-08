@@ -276,7 +276,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     public function find($primaryKey, $columns = array('*'))
     {
         $this->applyCriteria();
-        return $this->model->find($id, $columns);
+        return $this->model->find($primaryKey, $columns);
     }
 
     /**
