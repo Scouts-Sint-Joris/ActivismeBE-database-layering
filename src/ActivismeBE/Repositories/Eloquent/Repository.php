@@ -245,7 +245,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function delete($primaryKey)
     {
-        return $this->model->destroy($id);
+        return $this->model->destroy($primaryKey);
     }
 
     /**
