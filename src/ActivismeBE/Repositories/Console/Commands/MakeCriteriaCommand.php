@@ -1,11 +1,11 @@
 <?php
 
-namespace ActivismeBE\DatabaseLayering\Console\Commands;
+namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use ActivismeBE\DatabaseLayering\Console\Commands\Creators\CriteriaCreator;
+use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\CriteriaCreator;
 
 /**
  * Class MakeCriteriaCommand

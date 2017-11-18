@@ -5,16 +5,16 @@
   "homepage": "https://www.activisme.be",
   "keywords": ["laravel", "repository", "repositories", "eloquent", "database"],
   "require": {
-    "php": ">=7.0.0",
-    "illuminate/support": "^5.4",
-    "illuminate/database": "^5.4",
-    "illuminate/filesystem": "^5.4",
-    "illuminate/console": "^5.4"
+    "php": ">=5.6.0",
+    "illuminate/support": "5.4.*|5.5.*",
+    "illuminate/database": "5.4.*|5.5.*",
+    "illuminate/filesystem": "5.4.*|5.5.*",
+    "illuminate/console": "5.4.*|5.5.*"
   },
   "require-dev": {
     "mockery/mockery": "dev-master@dev",
     "squizlabs/php_codesniffer": "3.*",
-    "phpunit/phpunit": "~6.0",
+    "phpunit/phpunit": "~5.7|~6.0",
     "orchestra/testbench": "~3.0"
   },
   "autoload": {
@@ -30,6 +30,11 @@
   "extra": {
     "branch-alias": {
       "dev-master": "0.x-dev"
+    },
+    "laravel": {
+      "providers": [
+        "ActivismeBE\\DatabaseLayering\\Repositories\\Providers\\RepositoryProvider"
+      ]
     }
   },
   "minimum-stability": "dev",

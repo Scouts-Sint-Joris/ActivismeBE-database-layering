@@ -2,10 +2,9 @@
 
 namespace repository_namespace;
 
-use ActivismeBE\DatabaseLayering\{
-    Contracts\RepositoryInterface,
-    Eloquent\Repository
-};
+use model_namespace\model_name;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
+use ActivismeBE\DatabaseLayering\Repositories\Eloquent\Repository;
 
 /**
  * Class repository_class
@@ -16,10 +15,12 @@ class repository_class extends Repository
 {
 
     /**
+     * Set the eloquent model class for the repository.
+     *
      * @return string
      */
     public function model()
     {
-        return 'model_path\model_name';
+        return model_name::class;
     }
 }
