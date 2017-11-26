@@ -2,7 +2,7 @@
 
 namespace repository_namespace;
 
-use model_namespace\model_name;
+use model_path\model_name;
 use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Eloquent\Repository;
 

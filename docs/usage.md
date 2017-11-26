@@ -79,6 +79,7 @@ public function find($id, $columns = ['*'])
 public function findBy($field, $value, $columns = ['*'])
 public function findAllBy($field, $value, $columns = ['*'])
 public function findWhere($where, $columns = ['*'])
+public function whereIn($attribute, array $values, $columns = ['*'])
 ```
 
 **ActivismeBE\DatabaseLayering\Contracts\CriteriaInterface**
