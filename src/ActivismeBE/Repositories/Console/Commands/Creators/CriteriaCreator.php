@@ -2,16 +2,16 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators;
 
+use Doctrine\Common\Inflector\Inflector;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
-use Doctrine\Common\Inflector\Inflector;
 
 /**
  * Class CriteriaCreator
  *
  * @package ActivismeBE\DatabaseLayering\Console\Commands\Creators
  */
-class CriteriaCreator 
+class CriteriaCreator
 {
     protected $files;       /** @var Filesystem */
     protected $criteria;    /** @var Criteria   */
@@ -147,7 +147,7 @@ class CriteriaCreator
      */
     protected function getStub()
     {
-        return $this->files->get($this->getStubPath() . "criteria.stub"); // Return the stub. 
+        return $this->files->get($this->getStubPath() . "criteria.stub"); // Return the stub.
     }
 
     /**
@@ -157,7 +157,7 @@ class CriteriaCreator
      */
     protected function getStubPath()
     {
-        // TODO: Check if we can refactor this one. 
+        // TODO: Check if we can refactor this one.
     
         $path = __DIR__ . '/../../../../../../resources/stubs/'; // Path
         return $path; // Return the path.

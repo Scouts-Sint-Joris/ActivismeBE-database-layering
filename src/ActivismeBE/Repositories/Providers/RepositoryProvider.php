@@ -7,9 +7,9 @@ use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\Reposito
 use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\MakeCriteriaCommand;
 use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\MakeRepositoryCommand;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Filesystem\Filesystem;
 
 /**
  * Class RepositoryProvider
@@ -81,7 +81,7 @@ class RepositoryProvider extends ServiceProvider
         $this->app->instance('FileSystem', new Filesystem());
 
         // Composer.
-        $this->app->bind('Composer', function ($app) { 
+        $this->app->bind('Composer', function ($app) {
             return new Composer($app['FileSystem']);
         });
 

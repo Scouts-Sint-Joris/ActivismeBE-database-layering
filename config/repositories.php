@@ -4,11 +4,11 @@ return [
 
     /**
      * --------------------------------------------------------------------------
-     * Repository namespace 
+     * Repository namespace
      * --------------------------------------------------------------------------
-     * 
+     *
      * The namespace for the repository classes.
-     * 
+     *
      */
     'repository_namespace' => 'App\Repositories',
 

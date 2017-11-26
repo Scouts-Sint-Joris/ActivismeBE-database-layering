@@ -2,10 +2,10 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands;
 
-use Illuminate\Console\Command;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\CriteriaCreator;
+use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class MakeCriteriaCommand
@@ -74,7 +74,7 @@ class MakeCriteriaCommand extends Command
         $criteria = $arguments['criteria'];     // Set criteria
         $model    = $options['model'];          // Set model.
 
-        if ($this->creator->create($criteria, $model)) { // Create the criteria. 
+        if ($this->creator->create($criteria, $model)) { // Create the criteria.
             $this->info("Succesfully created the criteria class."); // Information message.
         }
     }

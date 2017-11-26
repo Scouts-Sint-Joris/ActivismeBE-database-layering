@@ -2,9 +2,6 @@
 
 namespace ActivismeBE\DatabaseLayering\Tests\Repositories;
 
-//error_reporting(E_ALL);
-//ini_set("display_errors", 1);
-
 use \Illuminate\Database\Schema\Blueprint;
 use \Mockery as m;
 use ActivismeBE\DatabaseLayering\Repositories\Providers\RepositoryProvider;
@@ -12,7 +9,7 @@ use ActivismeBE\DatabaseLayering\Tests\Resources\Models\User;
 use ActivismeBE\DatabaseLayering\Tests\Resources\Repositories\UserRepository;
 use Illuminate\Support\Collection;
 
-class RepositoryTest extends \Orchestra\Testbench\TestCase
+class BaseTest extends \Orchestra\Testbench\TestCase
 {
     protected $mock;
     protected $repository;
@@ -65,58 +62,5 @@ class RepositoryTest extends \Orchestra\Testbench\TestCase
             'email'      => 'email@example.tld',
             'password'   => 'secret',
         ]);
-    }
-
-    public function testFindOrFailSuc()
-    {
-        $call = $this->repository->findOrFail(1);
-
-        $this->assertEquals('firstname', $call->first_name);
-        $this->assertEquals('lastname', $call->last_name);
-        $this->assertEquals('email@example.tld', $call->email);
-        $this->assertEquals('secret', $call->password);
-    }
-
-    public function testFindOrFailErr()
-    {
-        //
-    }
-
-    public function testFindAllColumns()
-    {
-        $call = $this->repository->find(1);
-
-        $this->assertEquals('firstname', $call->first_name);
-        $this->assertEquals('lastname', $call->last_name);
-        $this->assertEquals('email@example.tld', $call->email);
-        $this->assertEquals('secret', $call->password);
-    }
-
-    public function testFindSpecificColumns()
-    {
-        $call = $this->repository->find(1, ['first_name', 'last_name']);
-
-        $this->assertEquals('firstname', $call->first_name);
-        $this->assertEquals('lastname', $call->last_name);
-        $this->assertNull($call->password);
-        $this->assertNull($call->email);
-    }
-
-    public function testDeleteData()
-    {
-        $this->repository->delete(1);
-        $check = $this->repository->find(1);
-
-        $this->assertNull($check);
-    }
-
-    public function testUpdateRich()
-    {
-        // TODO: Write test
-    }
-
-    public function testSaveModel()
-    {
-        // TODO: Write test
     }
 }

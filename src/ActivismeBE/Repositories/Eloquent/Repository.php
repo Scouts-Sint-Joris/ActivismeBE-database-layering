@@ -2,22 +2,22 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Eloquent;
 
-use Closure;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Container\Container as App;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-
-use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Contracts\CriteriaInterface;
-use ActivismeBE\DatabaseLayering\Repositories\Exceptions\RepositoryException;
+use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
+use ActivismeBE\DatabaseLayering\Repositories\Exceptions\RepositoryException;
+use Closure;
+
+use Illuminate\Container\Container as App;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Collection;
 
 /**
  * Class Repository
- * 
- * @category 
- * @author 
+ *
+ * @category
+ * @author
  * @author
  * @license  MIT License <https://cpsb.github.io/ActivismeBE-database-layering/license>
  * @link     https://cpsb.github.io/ActivismeBE-database-layering/license
@@ -60,7 +60,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * @param App $app
      * @param Collection $collection
-     * 
+     *
      * @throws \ActivismeBE\DatabaseLayering\Repositories\Exceptions\RepositoryException
      */
     public function __construct(App $app, Collection $collection)
@@ -77,14 +77,14 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @return mixed
      */
-    public abstract function model();
+    abstract public function model();
 
     /**
      * Get the base enttiy form the model.
-     * 
-     * @return \Illuminate\Database\Eloquent\Model 
+     *
+     * @return \Illuminate\Database\Eloquent\Model
      */
-    public function entity() 
+    public function entity()
     {
         return $this->newModel;
     }
@@ -93,21 +93,20 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Get all the records form the database table.
      *
      * @param array $columns The database column names u want to use in your view.
-     * 
+     *
      * @return mixed
      */
     public function all($columns = ['*'])
     {
         $this->applyCriteria();
         return $this->model->get($columns);
-    
     }
 
     /**
      * Apply database relations on the query.
      *
      * @param array $relations The relations u want to apply on your query.
-     * 
+     *
      * @return $this
      */
     public function with(array $relations)
@@ -120,10 +119,10 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Pluck all the values based on key and column.
      *
      * @param string $value The value for the lists function.
-     * @param string $key   The key for the lists function. 
-     * 
+     * @param string $key   The key for the lists function.
+     *
      * @deprecated deprecated in Laravel 5.3
-     * 
+     *
      * @return array
      */
     public function pluck($value, $key = null)
@@ -141,9 +140,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Paginate the database results from the query.
      *
-     * @param integer $perPage The data records u want to display per page. 
+     * @param integer $perPage The data records u want to display per page.
      * @param array   $columns Te database columns u want to use in the view.
-     * 
+     *
      * @return mixed
      */
     public function paginate($perPage = 25, $columns = ['*'])
@@ -156,7 +155,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Create a new data record in the database.
      *
      * @param array $data The data fields u want to store in the database table.
-     * 
+     *
      * @return mixed
      */
     public function create(array $data)
@@ -165,25 +164,25 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * Fill attributes data before saving. 
-     * 
-     * @param array  $data          The given data from the input. 
-     * @param integer $primaryKey   The primary key in the database table. 
-     * 
+     * Fill attributes data before saving.
+     *
+     * @param array  $data          The given data from the input.
+     * @param integer $primaryKey   The primary key in the database table.
+     *
      * @throws ModelNotFoundException
-     * 
+     *
      * @return mixed
      */
-    public function fill(array $data, $primaryKey) 
+    public function fill(array $data, $primaryKey)
     {
-        $model = $this->makeModel()->find($primaryKey); 
+        $model = $this->makeModel()->find($primaryKey);
 
         if (! $model) {
             throw new ModelNotFoundException("Model '" . $this->model() . "' with id ${id} not found.");
         }
 
         return $model->fill($data)->save();
-    } 
+    }
 
     /**
      * Save a model without mass assignment
@@ -191,7 +190,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @see  \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testSaveModel()
      *
      * @param array $data
-     * 
+     *
      * @return bool
      */
     public function saveModel(array $data)
@@ -209,7 +208,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @param array  $data
      * @param int    $primaryKey
      * @param string $attribute
-     * 
+     *
      * @return mixed
      */
     public function update(array $data, $primaryKey, $attribute = "id")
@@ -220,9 +219,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Update database records through the eloquent fill method.
      *
-     * @param  array     $data          The data fields u want to 
+     * @param  array     $data          The data fields u want to
      * @param  integer   $primaryKey    The primary key in the database column.
-     * 
+     *
      * @return mixed
      */
     public function updateRich(array $data, $primaryKey)
@@ -273,7 +272,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @param  array $columns       The database columns u want to use.
      * @return mixed
      */
-    public function find($primaryKey, $columns = array('*'))
+    public function find($primaryKey, $columns = ['*'])
     {
         $this->applyCriteria();
         return $this->model->find($primaryKey, $columns);
@@ -284,12 +283,12 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrfailSuc()
      * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrFailErr()
-     * 
+     *
      * @param integer $primaryKey The primary key in the database table.
-     * 
+     *
      * @return mixed
      */
-    public function findOrFail($primaryKey) 
+    public function findOrFail($primaryKey)
     {
         return $this->model->findOrFail($primaryKey);
     }
@@ -300,7 +299,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @param string $attribute The database column name.
      * @param string $value     The value that u want to find in the database table.
      * @param array  $columns   The database columns u want to use.
-     * 
+     *
      * @return mixed
      */
     public function findBy($attribute, $value, $columns = ['*'])
@@ -315,7 +314,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @param string $attribute The database column name.
      * @param string $value     The value where u want to search on.
      * @param array  $columns   The database columns want to use.
-     * 
+     *
      * @return mixed
      */
     public function findAllBy($attribute, $value, $columns = ['*'])
@@ -329,7 +328,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      *
      * @param array $where   The where criteria for the find query.
      * @param array $columns The database table columns u want to use in your view.
-     * @param bool  $or      Enable of disable setter for OR WHERE queries. 
+     * @param bool  $or      Enable of disable setter for OR WHERE queries.
      *
      * @return \Illuminate\Database\Eloquent\Collection|null
      */
@@ -393,9 +392,9 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Set Eloquent Model to instantiate
      *
      * @param $eloquentModel
-     * 
+     *
      * @throws RepositoryException
-     * 
+     *
      * @return Model
      */
     public function setModel($eloquentModel)
@@ -426,7 +425,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Skip the given criteria.
      *
      * @param  bool $status
-     * 
+     *
      * @return $this
      */
     public function skipCriteria($status = true)
@@ -449,7 +448,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Get records based on the repository call criteria.
      *
      * @param Criteria $criteria The criteria u want to take.
-     * 
+     *
      * @return $this
      */
     public function getByCriteria(Criteria $criteria)
@@ -462,7 +461,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Push new query criteria in the interface call.
      *
      * @param Criteria $criteria The Criteria instance u want to apply.
-     * 
+     *
      * @return $this
      */
     public function pushCriteria(Criteria $criteria)
@@ -488,11 +487,13 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function applyCriteria()
     {
-        if ($this->skipCriteria === true)
+        if ($this->skipCriteria === true) {
             return $this;
+        }
         foreach ($this->getCriteria() as $criteria) {
-            if ($criteria instanceof Criteria)
+            if ($criteria instanceof Criteria) {
                 $this->model = $criteria->apply($this->model, $this);
+            }
         }
         return $this;
     }

@@ -2,16 +2,16 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators;
 
+use Doctrine\Common\Inflector\Inflector;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
-use Doctrine\Common\Inflector\Inflector;
 
 /**
  * Class RepositoryCreator
  *
  * @package ActivismeBE\DatabaseLayering\Console\Commands\Creators
  */
-class RepositoryCreator 
+class RepositoryCreator
 {
     protected $files;       /** @var FileSystem */
     protected $repository;  /** @var Repository */
@@ -74,8 +74,8 @@ class RepositoryCreator
     }
 
     /**
-     * Create a new directory if the directory doesn't exists. 
-     * 
+     * Create a new directory if the directory doesn't exists.
+     *
      * @return void
      */
     protected function createDirectory()

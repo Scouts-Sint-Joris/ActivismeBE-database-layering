@@ -6,10 +6,10 @@ use ActivismeBE\DatabaseLayering\Repositories\Criteria\Criteria;
 
 /**
  * Interface CriteriaInterface
- * 
+ *
  * @package ActivismeBE\DatabaseLayering\Contracts
  */
-interface CriteriaInterface 
+interface CriteriaInterface
 {
     /**
      * @param bool $status
@@ -24,7 +24,7 @@ interface CriteriaInterface
     
     /**
      * @param Criteria $criteria
-     * 
+     *
      * @return $this
      */
     public function getByCriteria(Criteria $criteria);

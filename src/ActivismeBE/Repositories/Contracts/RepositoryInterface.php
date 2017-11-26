@@ -4,7 +4,7 @@ namespace ActivismeBE\DatabaseLayering\Repositories\Contracts;
 
 /**
  * Interface RepositoryInterface
- * 
+ *
  * @category RepositoryInterface
  * @package  ActivismeBE\DatabaseLayering\Contracts
  * @author   Tim Joosten <topairy@gmail.com>
@@ -15,7 +15,7 @@ interface RepositoryInterface
      * Get all the rows for the database table.
      *
      * @param array $columns The columns u want to use in your view.
-     * 
+     *
      * @return mixed
      */
     public function all($columns = ['*']);
@@ -25,7 +25,7 @@ interface RepositoryInterface
      *
      * @param integer $perPage The ata rows per page in the view.
      * @param array   $columns The coolumns u want to use in your view.
-     * 
+     *
      * @return mixed
      */
     public function paginate($perPage = 1, $columns = ['*']);
@@ -53,7 +53,7 @@ interface RepositoryInterface
      *
      * @param array   $data         The input data fields u want to update in the db.
      * @param integer $primaryKey   The PK in the database.
-     * 
+     *
      * @return mixed
      */
     public function update(array $data, $primaryKey);
@@ -62,7 +62,7 @@ interface RepositoryInterface
      * Delete a record in the database.
      *
      * @param integer $primaryKey The resource id in the database. (PK)
-     * 
+     *
      * @return mixed
      */
     public function delete($primaryKey);
@@ -83,7 +83,7 @@ interface RepositoryInterface
      *
      * @param integer $primaryKey       The resource id in the database. (PK)
      * @param array   $columns          The db table columns that u want to use in your view.
-     * 
+     *
      * @return mixed
      */
     public function find($primaryKey, $columns = ['*']);
@@ -91,8 +91,8 @@ interface RepositoryInterface
     /**
      * Try to find a record in the database based on the primary key.
      *
-     * @param integer $primaryKey The primary key in the database table. 
-     * 
+     * @param integer $primaryKey The primary key in the database table.
+     *
      * @return void
      */
     public function findOrFail($primaryKey);
@@ -103,18 +103,18 @@ interface RepositoryInterface
      * @param string $field   The field where u want to search on.
      * @param string $value   The value in the above given field.
      * @param array  $columns The database columns u want to use on the view.
-     * 
+     *
      * @return mixed
      */
     public function findBy($field, $value, $columns = ['*']);
 
     /**
-     * Find a database record by value and column. 
-     * 
+     * Find a database record by value and column.
+     *
      * @param string $field   The database column name.
      * @param string $value   The value in the database column.
      * @param array  $columns The database table columns u want to use in your view.
-     * 
+     *
      * @return mixed
      */
     public function findAllBy($field, $value, $columns = ['*']);
@@ -122,8 +122,8 @@ interface RepositoryInterface
     /**
      * Find a collection of models by the given query conditions.
      *
-     * @param array $where   The keys and values where u want to search on. 
-     * @param array $columns The database columns u want to use in the view. 
+     * @param array $where   The keys and values where u want to search on.
+     * @param array $columns The database columns u want to use in the view.
      *
      * @return mixed
      */

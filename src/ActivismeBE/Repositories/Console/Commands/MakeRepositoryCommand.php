@@ -2,51 +2,51 @@
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Console\Commands;
 
-use Illuminate\Console\Command; 
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputArgument;
 use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\RepositoryCreator;
+use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Class MakeRepositoryCommand
- * 
+ *
  * @package ActivismeBE\DatabaseLayering\Repositories\Console\Commands
  */
-class MakeRepositoryCommand extends Command 
+class MakeRepositoryCommand extends Command
 {
     /**
-     * The name and signature of the console command. 
-     * 
-     * @var string 
-     */ 
-    protected $name = 'make:repository'; 
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $name = 'make:repository';
 
     /**
-     * The console command description. 
-     * 
-     * @var string 
+     * The console command description.
+     *
+     * @var string
      */
     protected $description = 'Create a new repository class';
 
     /**
      * @var RepositoryCreator
      */
-    protected $creator; 
+    protected $creator;
 
     /**
-     * @var Composer 
-     */ 
-    protected $composer; 
-
-    /**
-     * @param RepositoryCreator $creator 
+     * @var Composer
      */
-    public function __construct(RepositoryCreator $creator) 
+    protected $composer;
+
+    /**
+     * @param RepositoryCreator $creator
+     */
+    public function __construct(RepositoryCreator $creator)
     {
-        parent::__construct(); 
+        parent::__construct();
 
         $this->creator  = $creator;             // Set the creator
-        $this->composer = app()['composer'];    // Set Composer 
+        $this->composer = app()['composer'];    // Set Composer
     }
 
     /**
@@ -77,11 +77,11 @@ class MakeRepositoryCommand extends Command
         }
     }
 
-     /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
+    /**
+    * Get the console command arguments.
+    *
+    * @return array
+    */
     protected function getArguments()
     {
         return [['repository', InputArgument::REQUIRED, 'The repository name.']];

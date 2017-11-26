@@ -4,9 +4,9 @@ namespace ActivismeBE\DatabaseLayering\Repositories\Traits;
 
 use ActivismeBE\DatabaseLayering\Repositories\Contracts\CriteriaInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Helpers\CacheKeys;
+use Exception;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use ReflectionObject;
-use Exception;
 
 /**
  * Trait CachableRepository
@@ -188,7 +188,7 @@ trait CachableRepository
             return parent::all($columns);
         }
 
-        $key     = $this->getCacheKey('all',func_get_args());
+        $key     = $this->getCacheKey('all', func_get_args());
         $minutes = $this->getCacheMinutes();
         $value   = $this->getCacheRepository()->remember($key, $minutes, function () use ($columns) {
             return parent::all($columns);
