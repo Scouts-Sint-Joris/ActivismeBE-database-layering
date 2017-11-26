@@ -214,7 +214,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function update(array $data, $primaryKey, $attribute = "id")
     {
-        return $this->model->where($attribute, '=', $id)->update($data);
+        return $this->model->where($attribute, '=', $primaryKey)->update($data);
     }
 
     /**
@@ -227,7 +227,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function updateRich(array $data, $primaryKey)
     {
-        if (! ($model = $this->model->find($id))) {
+        if (! ($model = $this->model->find($primaryKey))) {
             return false;
         }
 
@@ -291,7 +291,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      */
     public function findOrFail($primaryKey) 
     {
-        return $this->model->findOrFail($id);
+        return $this->model->findOrFail($primaryKey);
     }
 
     /**
