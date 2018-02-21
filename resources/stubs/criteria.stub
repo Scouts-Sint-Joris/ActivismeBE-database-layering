@@ -12,7 +12,6 @@ use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
  */
 class criteria_class extends Criteria 
 {
-
     /**
      * @param                       $model
      * @param RepositoryInterface   $repository
