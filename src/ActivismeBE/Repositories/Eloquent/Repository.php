@@ -187,8 +187,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Save a model without mass assignment
      *
-     * @see  \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testSaveModel()
-     *
      * @param array $data
      *
      * @return bool
@@ -236,8 +234,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Delete a record in the database.
      *
-     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testDeleteData()
-     *
      * @param  int   $primaryKey        The resource id in the database.
      *
      * @return mixed
@@ -265,9 +261,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Find a record in the database based on the primary key.
      *
-     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindAllColumns()
-     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindSpecificColumns()
-     *
      * @param  int   $primaryKey    The resource id in the database.
      * @param  array $columns       The database columns u want to use.
      * @return mixed
@@ -280,9 +273,6 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
 
     /**
      * Try to find a record in the database table based on the primary key.
-     *
-     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrfailSuc()
-     * @see \ActivismeBE\DatabaseLayering\Tests\Repositories\RepositoryTest::testFindOrFailErr()
      *
      * @param integer $primaryKey The primary key in the database table.
      *
