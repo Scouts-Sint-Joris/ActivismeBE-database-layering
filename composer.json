@@ -9,12 +9,12 @@
     "illuminate/support": "5.4.*|5.5.*|5.6.*",
     "illuminate/database": "5.4.*|5.5.*|5.6.*",
     "illuminate/filesystem": "5.4.*|5.5.*|5.6.*",
-    "illuminate/console": "5.4.*|5.5.*|5.6.*",
-    "friendsofphp/php-cs-fixer": "^2.8"
+    "illuminate/console": "5.4.*|5.5.*|5.6.*"
   },
   "require-dev": {
     "mockery/mockery": "dev-master@dev",
     "phpunit/phpunit": "~5.7|~6.0",
+    "friendsofphp/php-cs-fixer": "^2.8",
     "orchestra/testbench": "~3.0"
   },
   "autoload": {

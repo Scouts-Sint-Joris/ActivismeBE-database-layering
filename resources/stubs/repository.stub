@@ -18,7 +18,7 @@ class repository_class extends Repository
      *
      * @return string
      */
-    public function model()
+    public function model(): string
     {
         return model_name::class;
     }

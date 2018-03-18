@@ -274,13 +274,13 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     /**
      * Try to find a record in the database table based on the primary key.
      *
-     * @param integer $primaryKey The primary key in the database table.
-     *
+     * @param  integer  $primaryKey The primary key in the database table.
+     * @param  array    $columns    The database columns u want to use.
      * @return mixed
      */
-    public function findOrFail($primaryKey)
+    public function findOrFail(int $primaryKey, array $columns = ['*'])
     {
-        return $this->model->findOrFail($primaryKey);
+        return $this->model->findOrFail($primaryKey, $columns);
     }
 
     /**

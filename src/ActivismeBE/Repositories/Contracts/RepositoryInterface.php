@@ -91,11 +91,11 @@ interface RepositoryInterface
     /**
      * Try to find a record in the database based on the primary key.
      *
-     * @param integer $primaryKey The primary key in the database table.
-     *
+     * @param  integer $primaryKey  The primary key in the database table.
+     * @param  array   $columns     The database columns u want to use.
      * @return void
      */
-    public function findOrFail($primaryKey);
+    public function findOrFail(int $primaryKey, array $colums = ['*']);
 
     /**
      * Find a collection of models by the given query conditions.

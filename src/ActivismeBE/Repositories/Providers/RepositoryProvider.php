@@ -6,16 +6,10 @@ use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\Criteria
 use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\Creators\RepositoryCreator;
 use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\MakeCriteriaCommand;
 use ActivismeBE\DatabaseLayering\Repositories\Console\Commands\MakeRepositoryCommand;
-
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
 use Illuminate\Support\ServiceProvider;
 
-/**
- * Class RepositoryProvider
- *
- * @package ActivismeBE\DatabaseLayering\Providers
- */
 /**
  * Class RepositoryProvider
  *
