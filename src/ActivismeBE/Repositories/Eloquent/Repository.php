@@ -152,6 +152,19 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
+     * (Simple) paginate the database results from the query 
+     * 
+     * @param  integer  $perPage The data rows per page in the view
+     * @param  array    $columns The columns u want to use in your view
+     * @return mixed
+     */
+    public function simplePaginate(int $perPage = 25, array $columns = ['*'])
+    {
+        $this->applyCriteria();
+        return $this->model->simplePaginate($perPage, $columns);
+    }
+
+    /**
      * Create a new data record in the database.
      *
      * @param array $data The data fields u want to store in the database table.

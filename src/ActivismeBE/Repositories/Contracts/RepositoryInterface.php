@@ -23,12 +23,23 @@ interface RepositoryInterface
     /**
      * Paginate the database table results.
      *
-     * @param integer $perPage The ata rows per page in the view.
-     * @param array   $columns The coolumns u want to use in your view.
+     * @param integer $perPage The data rows per page in the view.
+     * @param array   $columns The columns u want to use in your view.
      *
      * @return mixed
      */
     public function paginate($perPage = 1, $columns = ['*']);
+
+    /**
+     * Paginate the database table results.
+     *
+     * @param integer $perPage The data rows per page in the view.
+     * @param array   $columns The columns u want to use in your view.
+     *
+     * @return mixed
+     */
+    public function simplePaginate($perPage = 1, $columns = ['*']);
+
 
     /**
      * Create a new row in the database table.
