@@ -38,7 +38,7 @@ interface RepositoryInterface
      *
      * @return mixed
      */
-    public function simplePaginate($perPage = 1, $columns = ['*']);
+    public function simplePaginate(int $perPage = 25, array $columns = ['*']);
 
 
     /**
