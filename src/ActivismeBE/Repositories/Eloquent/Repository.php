@@ -56,7 +56,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * @var bool
      */
     protected $preventCriteriaOverwriting = true;
-     
+
     /**
      * @param App $app
      * @param Collection $collection
@@ -88,7 +88,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     {
         return $this->newModel;
     }
-    
+
     /**
      * Get all the records form the database table.
      *
@@ -152,8 +152,8 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     }
 
     /**
-     * (Simple) paginate the database results from the query 
-     * 
+     * (Simple) paginate the database results from the query
+     *
      * @param  integer  $perPage The data rows per page in the view
      * @param  array    $columns The columns u want to use in your view
      * @return mixed
@@ -315,15 +315,16 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
      * Find all the records in the database bases on column and value.
      *
      * @param string $attribute The database column name.
+     * @param string $selector  The selector for the where criteria. Defaults to '='
      * @param string $value     The value where u want to search on.
      * @param array  $columns   The database columns want to use.
      *
      * @return mixed
      */
-    public function findAllBy($attribute, $value, $columns = ['*'])
+    public function findAllBy($attribute, string $selector = '=', $value, $columns = ['*'])
     {
         $this->applyCriteria();
-        return $this->model->where($attribute, '=', $value)->get($columns);
+        return $this->model->where($attribute, $selector, $value)->get($columns);
     }
 
     /**
@@ -362,7 +363,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
                     : $model->orWhere($field, '=', $value);
             }
         }
-        
+
         return $model->get($columns);
     }
 
@@ -403,7 +404,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
     public function setModel($eloquentModel)
     {
         $this->newModel = $this->app->make($eloquentModel);
-        
+
         if (! $this->newModel instanceof Model) {
             throw new RepositoryException(
                 "Class {$this->newModel} must be an instance of Illuminate\\Database\\Eloquent\\Model"
@@ -473,7 +474,7 @@ abstract class Repository implements RepositoryInterface, CriteriaInterface
             $key = $this->criteria->search(function ($item) use ($criteria) {
                 return (is_object($item) && (get_class($item) == get_class($criteria)));
             });
-           
+
             if (is_int($key)) { // Remove old criteria
                 $this->criteria->offsetUnset($key);
             }

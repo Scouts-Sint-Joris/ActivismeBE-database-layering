@@ -13,8 +13,8 @@ use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 class criteria_class extends Criteria 
 {
     /**
-     * @param                       $model
-     * @param RepositoryInterface   $repository
+     * @param                       $model      Tehe Eloquent database model where the criterie should applied on.
+     * @param RepositoryInterface   $repository The interface from the repository class.
      *
      * @return mixed
      */

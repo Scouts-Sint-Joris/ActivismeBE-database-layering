@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace ActivismeBE\DatabaseLayering\Repositories\Contracts;
 
@@ -122,13 +122,14 @@ interface RepositoryInterface
     /**
      * Find a database record by value and column.
      *
-     * @param string $field   The database column name.
-     * @param string $value   The value in the database column.
-     * @param array  $columns The database table columns u want to use in your view.
+     * @param string $field   	The database column name.
+     * @param string $selector	The selector for the where criteria. Defaults to '='
+     * @param string $value   	The value in the database column.
+     * @param array  $columns 	The database table columns u want to use in your view.
      *
      * @return mixed
      */
-    public function findAllBy($field, $value, $columns = ['*']);
+    public function findAllBy($field, string $selector, $value, $columns = ['*']);
 
     /**
      * Find a collection of models by the given query conditions.
